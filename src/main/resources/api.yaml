@@ -1,0 +1,32 @@
+openapi: 3.0.3
+info:
+  title: Core Banking Service
+  version: 1.0.0
+paths:
+  /accounts/{accountId}:
+    get:
+      tags:
+        - Accounts
+      operationId: getAccount
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        balance:
+          type: number
